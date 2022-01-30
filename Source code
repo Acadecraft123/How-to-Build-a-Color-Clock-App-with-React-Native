@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 
-export default class ColorClock extends Component {
+class ColorClock extends Component {
   constructor(props) {
     super(props);
 
@@ -80,7 +80,7 @@ export default class ColorClock extends Component {
         : 0,
       borderBottomLeftRadius: this.props.hourHandCurved
         ? this.props.hourHandWidth
-        : 0,
+        : 0
     };
   }
   minuteHand() {
@@ -100,7 +100,7 @@ export default class ColorClock extends Component {
         : 0,
       borderTopRightRadius: this.props.minuteHandCurved
         ? this.props.minuteHandWidth
-        : 0,
+        : 0
     };
   }
   secondHand() {
@@ -120,7 +120,7 @@ export default class ColorClock extends Component {
         : 0,
       borderTopRightRadius: this.props.secondHandCurved
         ? this.props.secondHandWidth
-        : 0,
+        : 0
     };
   }
   render() {
@@ -128,68 +128,30 @@ export default class ColorClock extends Component {
       <View style={this.getClockFrame()}>
         {
           <Image
-            style={{
-              width: this.props.clockSize - this.props.clockBorderWidth * 2,
-              height: this.props.clockSize - this.props.clockBorderWidth * 2,
-            }}
-            resizeMode="stretch"
+            style={{width: this.props.clockSize - this.props.clockBorderWidth * 2,
+            height: this.props.clockSize - this.props.clockBorderWidth * 2}}
+            resizeMode='stretch'
             source={require('./clock.jpg')}
           />
         }
         <View style={this.getClockContainer()}>
-          <View
-            style={[
-              this.hourHand(),
-              {
-                transform: [
-                  { rotate: this.state.hour + 'deg' },
-                  {
-                    translateX: -(
-                      this.props.hourHandOffset +
-                      this.props.hourHandLength / 2
-                    ),
-                  },
-                ],
-              },
-            ]}
+          <View style={[this.hourHand(),
+            {transform: [{rotate: this.state.hour + 'deg'},
+            {translateX: -(this.props.hourHandOffset +this.props.hourHandLength / 2)}]}]}
           />
-          <View
-            style={[
-              this.minuteHand(),
-              {
-                transform: [
-                  { rotate: this.state.min + 'deg' },
-                  {
-                    translateY: -(
-                      this.props.minuteHandOffset +
-                      this.props.minuteHandLength / 2
-                    ),
-                  },
-                ],
-              },
-            ]}
+          <View style={[this.minuteHand(),
+            {transform: [{rotate: this.state.min + 'deg'},
+            {translateY: -(this.props.minuteHandOffset + this.props.minuteHandLength / 2)}]}]}
           />
-          <View
-            style={[
-              this.secondHand(),
-              {
-                transform: [
-                  { rotate: this.state.sec + 'deg' },
-                  {
-                    translateY: -(
-                      this.props.secondHandOffset +
-                      this.props.secondHandLength / 2
-                    ),
-                  },
-                ],
-              },
-            ]}
+          <View style={[this.secondHand(),
+            {transform: [{rotate: this.state.sec + 'deg'},
+            {translateY: -(this.props.secondHandOffset + this.props.secondHandLength / 2)}]}]}
           />
-          <View style={this.getClockFace()} />
-        </View>
+          <View style={this.getClockFace()}/>
       </View>
-    );
-  }
+    </View>
+  )
+}
 }
 
 ColorClock.defaultProps = {
@@ -221,7 +183,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import ColorClock from './ColorClock';
 
-export default class Clock extends Component {
+class Clock extends Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
